@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import alarmSound from '../assets/sounds/alarm.mp3';
 import { Time } from './Time';
 import { TimerControl } from './TimeSetting';
+import { TimeButton } from './TimeButton';
 
 export function Clock() {
     const [sessionLength, setSessionLength] = useState(25);
@@ -69,21 +70,9 @@ export function Clock() {
     }, [isRunning, updateTime]);
 
     return (
-        <section className="max-lg:mb-16 max-lg:w-80 max-w-lg p-6 mt-10  m-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-zinc-800 dark:border-gray-70">
+        <section className="max-lg:mb-16  max-w-lg p-6 mt-10  m-auto  border border-gray-200 rounded-lg shadow bg-[#454545] dark:border-gray-70">
             <Time timerLabel={timerLabel} timeLeft={timeLeft} />
-            <article className="mt-10 flex gap-5 m-auto justify-center">
-                <button
-                    id="start_stop"
-                    className={`p-3 ${isRunning ? 'bg-orange-500' : 'bg-green-500'} text-xl rounded-lg`}
-                    onClick={handleStartAndStop}
-                >
-                    {isRunning ? 'Pause' : 'Start'}
-                </button>
-                <button id="reset" className="p-3 bg-red-500 text-xl rounded-lg" onClick={handleReset}>
-                    Reset
-                </button>
-            </article>
-
+            <TimeButton handleReset={handleReset} isRunning={isRunning} handleStartAndStop={handleStartAndStop} />
             <TimerControl
                 id="break"
                 label="Break Length"
