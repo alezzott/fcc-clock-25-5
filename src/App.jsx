@@ -1,9 +1,11 @@
 import './App.css';
+import { Clock } from './components/Clock';
 
 function App() {
     return (
         <section>
-            <h1 className="text-3xl font-bold underline">Hello world!</h1>
+            <h1>Clock.js</h1>
+            <Clock />
         </section>
     );
 }
